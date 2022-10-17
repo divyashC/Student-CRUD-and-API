@@ -1,0 +1,67 @@
+@model IEnumerable<Student_CRUD_and_API.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Student List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-warning" style="margin-bottom: 20px; margin-top: 30px;">Create New</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Student ID
+        </th>
+        <th>
+            Full Name
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phone No.
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary btn-sm">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
